@@ -1,12 +1,17 @@
 CC=gcc
-CFLAGS=-lmg
-DEPS=BMP2DAT.h DAT2BMP.h
-OBJ=BMPcutter.c
+CFLAGS=-lm -g
+LDFLAGS=
+SOURCES=BMP2DAT.c DAT2BMP.c BMPcutter.c itoa.c
+OBJ=$(SOURCES:.c = .o)
+EXECUTABLE=BMPcutter
 
-%.o:%.c $(DEPS)
-	$(CC) -c -o $@ $<$(CFLAGS)
-BMPcutter:$(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+all:$(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE):$(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
 
 .PHONY: clean
 

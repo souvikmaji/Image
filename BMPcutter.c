@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include "BMP2DAT.h"
 #include "DAT2BMP.h"
-#include "itoa.c"
+#include "itoa.h"
 int mkdir(const char *pathname, mode_t mode);
 
 int main( int argc , char** argv )
